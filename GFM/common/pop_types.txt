@@ -558,7 +558,7 @@ migration_chance = {
 
 #general colonial migration mtth, same for all pops
 colonialmigration_chance = {
-    factor = 0.2
+    factor = 0.25
 
     modifier = {
         factor = -10.0
@@ -949,7 +949,7 @@ assimilation_chance = {
     factor = 1
 
     modifier = {
-        factor = 1.5
+        factor = 3
         OR = {
             is_state_religion = yes
             AND = {
@@ -973,26 +973,55 @@ assimilation_chance = {
 
     group = {
         modifier = {
-            factor = 0.1
+            factor = 0.33
             literacy = 0.6
         }
         modifier = {
-            factor = 0.1
+            factor = 0.33
             literacy = 0.7
         }
         modifier = {
-            factor = 0.1
+            factor = 0.33
             literacy = 0.8
         }
     }
 
+	modifier = {
+		factor = 3
+		AND = { 
+		citizenship_policy = full_citizenship
+		citizens_rights = all_voting_pops
+		}
+	}
+	
+	modifier = {
+		factor = 2
+		OR = { 
+		citizenship_policy = full_citizenship
+		citizens_rights = all_voting_pops
+		}
+	}
+	
+	modifier = {
+		factor = 1
+		citizens_rights = culture_voting_only
+	}
+	
+	modifier = {
+		factor = -1
+		OR = { 
+		religious_policy = moralism
+		citizenship_policy = residency
+		}
+	}
+
     modifier = {
-        factor = -0.2
+        factor = -0.5
         is_state_religion = no
     }
 
     modifier = {
-        factor = -0.9
+        factor = -1.5
         has_pop_religion = jewish
         NOT = { country = { has_country_flag = jewish_country } }
     }
@@ -1076,11 +1105,6 @@ assimilation_chance = {
         }
     }
 
-    #modifier = {
-    #    factor = -1
-    #    is_accepted_culture = yes
-    #}
-
     modifier = {
         factor = 1.5
         has_pop_culture = ainu
@@ -1088,7 +1112,7 @@ assimilation_chance = {
     }
 	
     modifier = {
-        factor = -80
+        factor = -20
         country = {
             has_country_flag = new_world_nation
 			NOT = { has_country_flag = native_assimilation_enacted }
@@ -1105,7 +1129,7 @@ assimilation_chance = {
     }
 
     modifier = {
-        factor = -80
+        factor = -20
         country = { NOT = { has_country_flag = african_integration_policy } }
         is_culture_group = african_diaspora_cultures
         OR = {
@@ -1115,7 +1139,7 @@ assimilation_chance = {
     }
 
     modifier = {
-        factor = -80
+        factor = -20
         country = { NOT = { has_country_flag = african_integration_policy } }
         OR = {
             location = { continent = africa }
